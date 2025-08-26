@@ -1,4 +1,4 @@
-{
+const cards = {
     "1": {
         "answer": 3,
         "group": 1,
@@ -12122,3 +12122,5 @@
         "question": "При обработке менее опасных ран следует:  "
     }
 }
+
+export default cards
