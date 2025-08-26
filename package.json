@@ -1,11 +1,12 @@
 {
-  "name": "roadrules-test-am",
+  "name": "roadrules-am",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "start:server": "react-router-serve ./build/server/index.js",
+    "start": "http-server ./build/client",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
@@ -17,11 +18,13 @@
     "react-router": "^7.7.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.2",
     "@react-router/dev": "^7.7.1",
     "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "http-server": "^14.1.1",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
