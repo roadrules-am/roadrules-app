@@ -1,13 +1,21 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { redirect } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
+	return [
+		{ title: "Тренажер ПДД – roadrules-am" },
+		{
+			name: "description",
+			content: "Подготовься к теоретическому экзамену в Армении",
+		},
+	];
 }
 
-export default function Home() {
-  return <Welcome />;
+export async function loader({ params }: Route.LoaderArgs) {
+	const cardId = 12;
+	return redirect(`/questions/${cardId}`);
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+	return <p>cardID {loaderData.cardId}</p>;
 }
