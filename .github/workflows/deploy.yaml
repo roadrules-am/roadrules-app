@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js (if needed)
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -37,6 +37,6 @@ jobs:
         with:
           branch: main  # The branch to deploy to (in the target repo)
           folder: build/client  # The folder with the built files (e.g., 'public', 'build')
-          repository-name: roadrules-am/your-organization-name.github.io
+          repository-name: roadrules-am/roadrules-am.github.io
           token: ${{ secrets.GH_PAGES_TOKEN }}
           clean: true
