@@ -1,0 +1,37 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (if needed)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Step to install dependencies and build your project.
+      # Replace this with the commands for your specific project.
+      - name: Install Dependencies and Build
+        run: |
+          pnpm install
+          pnpm run build
+
+      # Use the GitHub Pages deploy action.
+      # This action takes the built files and pushes them to the
+      # gh-pages branch of the target repository.
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main  # The branch to deploy to (in the target repo)
+          folder: build/client  # The folder with the built files (e.g., 'public', 'build')
+          repository-name: roadrules-am/your-organization-name.github.io
+          token: ${{ secrets.GH_PAGES_TOKEN }}
+          clean: true
