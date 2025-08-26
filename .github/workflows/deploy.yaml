@@ -17,6 +17,11 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+
       # Step to install dependencies and build your project.
       # Replace this with the commands for your specific project.
       - name: Install Dependencies and Build
