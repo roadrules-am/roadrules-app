@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import type { Route } from "./+types/home";
-import { useNavigate } from "react-router";
+import { Outlet, useLocation, useNavigate } from "react-router";
 import getNextCardUUID from "~/lib/getNextCard";
+import type { Route } from "./+types/home";
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
 	return [
 		{ title: "Тренажёр ПДД – roadrules-am" },
 		{
@@ -13,17 +13,21 @@ export function meta({}: Route.MetaArgs) {
 	];
 }
 
-export async function loader({ context }: Route.LoaderArgs) {
-	const cardId = getNextCardUUID();
-	return cardId;
-}
-
-export default function Home({}: Route.ComponentProps) {
+export default function Home() {
+	const location = useLocation();
 	const navigate = useNavigate();
-	const cardId = getNextCardUUID();
 	useEffect(() => {
-		navigate(`/questions/${cardId}`);
-	}, [cardId, navigate]);
+		if (location.pathname === "/") {
+			const cardId = getNextCardUUID();
+			navigate(`/questions/${cardId}`);
+		}
+	}, [navigate, location]);
 
-	return <p>Загрузка</p>;
+	return (
+		<div>
+			<a href="/">Тренажёр</a>
+			<a href="/questions">Вопросы</a>
+			<Outlet />
+		</div>
+	);
 }
