@@ -41,7 +41,7 @@ export default function Card({
 	}
 
 	return (
-		<div className="w-full max-w-[420px] flex flex-col">
+		<div className="w-full max-w-[420px] flex flex-col mb-[60px]">
 			<p className="px-2 text-sm my-1">
 				Г{groupId} В{cardId}, FP: {forgetProbability} CS: {correctStreak}
 			</p>
