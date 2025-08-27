@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import type { Route } from "./+types/home";
-import { redirect } from "react-router";
+import { useNavigate } from "react-router";
+import getNextCardUUID from "~/lib/getNextCard";
 
 export function meta({}: Route.MetaArgs) {
 	return [
-		{ title: "Тренажер ПДД – roadrules-am" },
+		{ title: "Тренажёр ПДД – roadrules-am" },
 		{
 			name: "description",
 			content: "Подготовься к теоретическому экзамену в Армении",
@@ -11,11 +13,17 @@ export function meta({}: Route.MetaArgs) {
 	];
 }
 
-export async function loader({ params }: Route.LoaderArgs) {
-	const cardId = 12;
-	return redirect(`/questions/${cardId}`);
+export async function loader({ context }: Route.LoaderArgs) {
+	const cardId = getNextCardUUID();
+	return cardId;
 }
 
-export default function Home({ loaderData }: Route.ComponentProps) {
-	return <p>cardID {loaderData.cardId}</p>;
+export default function Home({}: Route.ComponentProps) {
+	const navigate = useNavigate();
+	const cardId = getNextCardUUID();
+	useEffect(() => {
+		navigate(`/questions/${cardId}`);
+	}, [cardId, navigate]);
+
+	return <p>Загрузка</p>;
 }

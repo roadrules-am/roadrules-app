@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
-    "dev": "react-router dev",
+    "dev": "react-router dev --host",
     "start:server": "react-router-serve ./build/server/index.js",
     "start": "http-server ./build/client",
     "typecheck": "react-router typegen && tsc"

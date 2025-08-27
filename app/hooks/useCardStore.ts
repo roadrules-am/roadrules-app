@@ -9,7 +9,7 @@ type Card = {
 	imageId?: number;
 	groupId: number;
 	cardId: number;
-	correctStreak: number;
+	correctStreak: number | null;
 	forgetProbability: number;
 };
 
@@ -18,6 +18,8 @@ type CardStore = {
 };
 type CardActions = {
 	getCardById: (cardId: string) => Card | undefined;
+	setCardFP: (cardId: string, newFP: number) => void;
+	setCardStreak: (cardId: string, newStreak: number) => void;
 };
 
 export const useCardStore = create<CardStore & CardActions>()(
@@ -26,6 +28,28 @@ export const useCardStore = create<CardStore & CardActions>()(
 			cards: getInitialState(cards),
 			getCardById: (cardId: string) => {
 				return get().cards[cardId];
+			},
+			setCardFP: (cardId: string, newFP: number) => {
+				set((state) => ({
+					cards: {
+						...state.cards,
+						[cardId]: {
+							...state.cards[cardId],
+							forgetProbability: newFP,
+						},
+					},
+				}));
+			},
+			setCardStreak: (cardId: string, newStreak: number) => {
+				set((state) => ({
+					cards: {
+						...state.cards,
+						[cardId]: {
+							...state.cards[cardId],
+							correctStreak: newStreak,
+						},
+					},
+				}));
 			},
 		}),
 		{
@@ -56,9 +80,11 @@ function getInitialState(cards: Record<string, CardData>) {
 			imageId: img ? Number(id) : undefined,
 			groupId: group,
 			cardId: numberPerGroup,
-			correctStreak: 0,
+			correctStreak: null,
 			forgetProbability: 1,
 		};
 	}
 	return CardState;
 }
+
+export const cardStore = useCardStore;
