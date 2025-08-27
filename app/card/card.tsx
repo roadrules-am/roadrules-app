@@ -44,7 +44,7 @@ export default function Card({
 	}
 
 	return (
-		<div className="w-full max-w-[420px] flex flex-col mb-[60px]">
+		<div className="w-full max-w-[420px] flex flex-col">
 			<p className="px-2 text-sm my-1">
 				Г{groupId} В{cardId}, FP: {forgetProbability} CS: {correctStreak}
 			</p>
@@ -62,11 +62,13 @@ export default function Card({
 				correctId={correctId}
 				onAnswer={handleAnswer}
 			/>
-			<TelegramComments
-				websiteKey={"yqxQuEh8"}
-				useDarkMode={isDarkMode}
-				wrapperClassName="TGCommentsWidget"
-			/>
+			<div className="mt-8">
+				<TelegramComments
+					websiteKey={"yqxQuEh8"}
+					useDarkMode={isDarkMode}
+					wrapperClassName="TGCommentsWidget"
+				/>
+			</div>
 		</div>
 	);
 }
