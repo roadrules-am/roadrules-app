@@ -13,3 +13,7 @@ body {
     color-scheme: dark;
   }
 }
+
+.TGCommentsWidget {
+    @apply pb-[68px]
+}

@@ -25,8 +25,8 @@ export default function Card({
 	forgetProbability,
 }: CardProps) {
 	const { setCardFP, setCardStreak } = useCardStore();
-
 	const cardUuid = `${groupId}-${cardId}`;
+	const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
 	function handleAnswer(isCorrect: boolean) {
 		if (isCorrect) {
 			const newFP = correctStreak === null ? 0.3 : 1 / (1.05 + correctStreak);
@@ -59,7 +59,11 @@ export default function Card({
 				correctId={correctId}
 				onAnswer={handleAnswer}
 			/>
-			<TelegramComments websiteKey={"yqxQuEh8"} />
+			<TelegramComments
+				websiteKey={"yqxQuEh8"}
+				useDarkMode={isDarkMode}
+				wrapperClassName="TGCommentsWidget"
+			/>
 		</div>
 	);
 }
