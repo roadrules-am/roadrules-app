@@ -26,7 +26,10 @@ export default function Card({
 }: CardProps) {
 	const { setCardFP, setCardStreak } = useCardStore();
 	const cardUuid = `${groupId}-${cardId}`;
-	const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	let isDarkMode = false;
+	if (typeof window !== "undefined") {
+		isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	}
 	function handleAnswer(isCorrect: boolean) {
 		if (isCorrect) {
 			const newFP = correctStreak === null ? 0.3 : 1 / (1.05 + correctStreak);
