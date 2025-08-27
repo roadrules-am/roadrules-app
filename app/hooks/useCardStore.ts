@@ -2,7 +2,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { create } from "zustand";
 import cards from "~/cardsData/cards";
 
-type Card = {
+export type Card = {
 	question: string;
 	answerOptions: string[];
 	correctId: number;
@@ -13,16 +13,18 @@ type Card = {
 	forgetProbability: number;
 };
 
-type CardStore = {
-	cards: Record<string, Card>;
-};
+export type CardStore = Record<string, Card>;
 type CardActions = {
 	getCardById: (cardId: string) => Card | undefined;
 	setCardFP: (cardId: string, newFP: number) => void;
 	setCardStreak: (cardId: string, newStreak: number) => void;
 };
 
-export const useCardStore = create<CardStore & CardActions>()(
+type CardStoreFull = {
+	cards: CardStore;
+} & CardActions;
+
+export const useCardStore = create<CardStoreFull>()(
 	persist(
 		(set, get) => ({
 			cards: getInitialState(cards),

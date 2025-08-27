@@ -64,6 +64,7 @@ export default function Card({
 			/>
 			<div className="mt-8">
 				<TelegramComments
+					key={cardUuid}
 					websiteKey={"yqxQuEh8"}
 					useDarkMode={isDarkMode}
 					wrapperClassName="TGCommentsWidget"
