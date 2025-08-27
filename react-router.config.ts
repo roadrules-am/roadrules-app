@@ -7,6 +7,6 @@ export default {
 	ssr: false,
 	async prerender() {
 		const cardsPaths = getCardsPaths();
-		return ["/", ...cardsPaths];
+		return ["/", "/questions", ...cardsPaths];
 	},
 } satisfies Config;
