@@ -1,13 +1,29 @@
+import { useEffect } from "react";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { useNavigate } from "react-router";
+import getNextCardUUID from "~/lib/getNextCard";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
+	return [
+		{ title: "Тренажёр ПДД – roadrules-am" },
+		{
+			name: "description",
+			content: "Подготовься к теоретическому экзамену в Армении",
+		},
+	];
 }
 
-export default function Home() {
-  return <Welcome />;
+export async function loader({ context }: Route.LoaderArgs) {
+	const cardId = getNextCardUUID();
+	return cardId;
+}
+
+export default function Home({}: Route.ComponentProps) {
+	const navigate = useNavigate();
+	const cardId = getNextCardUUID();
+	useEffect(() => {
+		navigate(`/questions/${cardId}`);
+	}, [cardId, navigate]);
+
+	return <p>Загрузка</p>;
 }
