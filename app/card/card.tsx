@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { TelegramComments } from "react-telegram-comments";
 import { useCardStore } from "~/hooks/useCardStore";
 import getNextCardUUID from "~/lib/getNextCard";
 
@@ -24,19 +25,6 @@ export default function Card({
 	forgetProbability,
 }: CardProps) {
 	const { setCardFP, setCardStreak } = useCardStore();
-
-	useEffect(() => {
-		const script = document.createElement("script");
-		script.src = "https://comments.app/js/widget.js?3";
-		script.async = true;
-		script.setAttribute("data-comments-app-website", "yqxQuEh8");
-		script.setAttribute("data-limit", "5");
-		document.body.appendChild(script);
-
-		return () => {
-			document.body.removeChild(script);
-		};
-	}, []);
 
 	const cardUuid = `${groupId}-${cardId}`;
 	function handleAnswer(isCorrect: boolean) {
@@ -71,6 +59,7 @@ export default function Card({
 				correctId={correctId}
 				onAnswer={handleAnswer}
 			/>
+			<TelegramComments websiteKey={"yqxQuEh8"} />
 		</div>
 	);
 }
