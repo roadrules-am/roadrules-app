@@ -72,7 +72,7 @@ type NextPanelProps = {
 function NextPanel({ onNextCard, isVisible }: NextPanelProps) {
 	return (
 		<div
-			className={`absolute bottom-0 left-0 w-full px-1 py-2 ${isVisible ? "" : "hidden"}`}
+			className={`fixed bottom-0 left-0 w-full px-1 py-2 ${isVisible ? "" : "hidden"}`} // i need it to be fixed
 		>
 			<button
 				className="px-3 rounded-full flex flex-row h-[48px] w-full justify-center items-center active:bg-blue-600 hover:cursor-pointer bg-blue-400 dark:bg-blue-700"
