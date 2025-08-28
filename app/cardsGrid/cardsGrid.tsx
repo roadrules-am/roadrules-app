@@ -31,19 +31,21 @@ export default function CardsGrid({ cards }: CardsGridProps) {
 
 	return (
 		<div className="w-full">
-			{cardGroups.map((group) => {
-				if (!group.cards) return null;
-				return (
-					<button
-						type="button"
-						key={group.id}
-						onClick={() => handleTabClick(group.id)}
-					>
-						{group.id}
-					</button>
-				);
-			})}
-
+			<div className="flex flex-wrap flex-row justify-start p-2">
+				{cardGroups.map((group) => {
+					if (!group.cards) return null;
+					return (
+						<button
+							className={`flex flex-none basis-[60px] h-[48px] m-auto justify-center items-center ${activeTab === group.id ? "border-4 rounded-sm border-blue-300 dark:border-blue-700" : ""}`}
+							type="button"
+							key={group.id}
+							onClick={() => handleTabClick(group.id)}
+						>
+							{group.id}
+						</button>
+					);
+				})}
+			</div>
 			{/* Tab Content */}
 			{cardGroups.map((group) => (
 				<div
