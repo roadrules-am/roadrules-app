@@ -1,5 +1,5 @@
 import Card from "~/card/card";
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/question";
 import { useCardStore } from "~/hooks/useCardStore";
 
 export function meta({ params }: Route.MetaArgs) {

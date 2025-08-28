@@ -1,87 +1,34 @@
-# Welcome to React Router!
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Website: [roadrules-am.github.io](roadrules-am.github.io)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+# Armenian traffic law exam preparation app
+Quizz-like app to help prepare for traffic law exam in Armenia for Russian-speakers.
+
+Used [Official questions from police.am](https://www.police.am/%D5%BE%D5%A1%D6%80%D5%B8%D6%80%D5%A4%D5%A1%D5%AF%D5%A1%D5%B6-%D5%A5%D5%BE-%D5%A5%D6%80%D5%A9%D5%A5%D5%BE%D5%A5%D5%AF%D5%B8%D6%82%D5%A9%D5%B5%D5%A1%D5%B6-%D5%BF%D5%A5%D5%B2%D5%A5%D5%AF%D5%A1%D5%BF%D5%B8%D6%82/the-list-of-driving-theory-test-questions.html) 13.04.2022 version
+
 
 ## Features
+- Saving progress (continue where you left)
+- Primitive spaced repetition algorithm (cards which you likely to forget, 
+will be tested more often)
+- Comments (discuss questions)
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
 
-## Getting Started
+## Useful Materials
+- [Quizz in russian but without saving progress](https://transinfo.am/ru/pdd/tickets-on-the-topics.html)
+- [Armenian traffic law in russian](https://transinfo.am/ru/pdd/6_6.html)
 
-### Installation
 
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+## Contributions
+App is at it's MVP stage and has a large room for improvements. Feel free to create pull requests and suggest changes.
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+pnpm install
 ```
 
-## Styling
+```
+pnpm run dev
+```
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+### Tech
+- React Router Framework(pre-rendering)

@@ -46,7 +46,7 @@ export default function CardsGrid({ cards }: CardsGridProps) {
 					);
 				})}
 			</div>
-			{/* Tab Content */}
+
 			{cardGroups.map((group) => (
 				<div
 					className="flex flex-wrap flex-row justify-start p-2"
@@ -62,7 +62,7 @@ export default function CardsGrid({ cards }: CardsGridProps) {
 							color =
 								"border-red-300 dark:border-red-700 rounded-full border-2";
 						if (card.forgetProbability <= 0.7)
-							color = `bg-green-300 dark:bg-green-700 rounded-sm opacity-[.${opacity}]`; // not working for some values!!
+							color = `bg-green-300 dark:bg-green-700 rounded-sm`;
 						return (
 							<div
 								key={card.cardId}
